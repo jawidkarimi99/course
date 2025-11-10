@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI-Fluent Software Engineer · Roadmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-elevated: #0c1020;
+      --bg-card: #111726;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59,130,246,0.15);
+      --accent-strong: #60a5fa;
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --success: #4ade80;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.6);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(120% 160% at 20% 0%, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", sans-serif;
+      line-height: 1.6;
+      padding: 0 0 64px;
+    }
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+    header .subtitle {
+      max-width: 680px;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    nav a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.3);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    nav a:hover {
+      background: rgba(37,99,235,0.15);
+      border-color: var(--accent);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.3);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+    }
+    .pill span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    section {
+      margin-top: 24px;
+      padding: 20px 18px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.98));
+      border: 1px solid rgba(148,163,184,0.22);
+      box-shadow: var(--shadow-soft);
+    }
+    section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+    section p {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .progress-wrapper {
+      margin-top: 10px;
+      background: rgba(15,23,42,0.9);
+      border-radius: 999px;
+      padding: 10px 12px;
+      border: 1px solid rgba(148,163,184,0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #020617;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #22c55e);
+      transition: width 0.3s ease-out;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      min-width: 140px;
+      text-align: right;
+    }
+
+    .modules-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .modules-header h2 {
+      margin-bottom: 0;
+    }
+    .modules-header small {
+      color: var(--text-soft);
+      font-size: 0.85rem;
+    }
+    .modules-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.95);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .btn.primary {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: #e5edff;
+    }
+    .btn:hover {
+      border-color: var(--accent);
+      color: #e5edff;
+    }
+
+    .accordion {
+      margin-top: 12px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: radial-gradient(circle at 0 0, rgba(37,99,235,0.16), transparent 52%),
+                  linear-gradient(145deg, #020617, #020617);
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .accordion-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .accordion-title-main {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+    .accordion-title-sub {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+    .accordion-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .week-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(75,85,99,0.9);
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+    .week-status.completed {
+      border-color: var(--success);
+      color: var(--success);
+      background: rgba(21,128,61,0.15);
+    }
+    .week-status input {
+      accent-color: var(--accent);
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+    .chevron {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      transform-origin: center;
+      transition: transform 0.2s ease-out, background 0.2s ease-out;
+    }
+    .accordion.open .chevron {
+      transform: rotate(90deg);
+      background: rgba(15,23,42,0.9);
+      color: #e5edff;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out;
+      border-top: 1px solid rgba(31,41,55,0.95);
+    }
+    .accordion-content-inner {
+      padding: 14px 18px 18px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: 10px;
+    }
+    .accordion-content-inner strong {
+      color: #e5e7eb;
+    }
+    .accordion-content-inner ul {
+      margin-left: 20px;
+      display: grid;
+      gap: 4px;
+    }
+    .accordion-content-inner li {
+      padding-left: 2px;
+    }
+    .section-tag {
+      font-size: 0.8rem;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .quiz {
+      margin-top: 4px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.85);
+      border: 1px dashed rgba(75,85,99,0.9);
+      font-size: 0.85rem;
+    }
+    .quiz ul {
+      margin-left: 16px;
+      margin-top: 4px;
+      gap: 2px;
+    }
+    .quiz details {
+      margin-top: 6px;
+    }
+    .quiz summary {
+      cursor: pointer;
+      color: var(--accent-strong);
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .accordion-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .progress-label {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="pill">
+        <span class="dot"></span>
+        <span>AI-Fluent Software Engineer · Personal Roadmap</span>
+      </div>
+      <h1>24-Week AI-Aware Software Engineer Roadmap</h1>
+      <p class="subtitle">
+        This site is your <strong>career roadmap</strong>. Each week blends:
+        core CS skills, AI-assisted coding, and practical projects. Mark weeks
+        as done, follow the links to learn, and use quizzes + answer keys to
+        check yourself.
+      </p>
+      <nav>
+        <a href="#intro">Overview</a>
+        <a href="#weekly-modules">Weekly Modules</a>
+        <a href="#prompt-library">Prompt Library</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </header>
+
+    <section id="intro">
+      <h2>How to Use This Roadmap</h2>
+      <p>
+        Aim for <strong>1 week per module</strong>. Some weeks will take longer;
+        that’s fine. The important part is:
+      </p>
+      <ul style="margin-top:8px;margin-left:18px;font-size:0.92rem;color:var(--text-soft);display:grid;gap:4px;">
+        <li>Do the <strong>practice tasks</strong> before looking at solutions.</li>
+        <li>Use AI (ChatGPT, Claude, etc.) as a <strong>pair-programmer</strong>, not a crutch.</li>
+        <li>After each week, mark it <strong>Done</strong> and glance at the answer links.</li>
+      </ul>
+      <div class="progress-wrapper" style="margin-top:14px;">
+        <div class="progress-bar">
+          <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        </div>
+        <div class="progress-label" id="progress-label">
+          0 / 24 weeks completed
+        </div>
+      </div>
+    </section>
+
+    <section id="weekly-modules">
+      <div class="modules-header">
+        <div>
+          <h2>Weekly Modules (Weeks 1–24)</h2>
+          <small>CS fundamentals + AI tools + real projects.</small>
+        </div>
+        <div class="modules-controls">
+          <button class="btn" id="expand-all">Expand All</button>
+          <button class="btn" id="collapse-all">Collapse All</button>
+          <button class="btn primary" id="reset-progress">Reset Progress</button>
+        </div>
+      </div>
+
+      <!-- WEEK 1 -->
+      <div class="accordion" data-week="1">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 1 – Arrays, Sorting & Big-O</div>
+            <div class="accordion-title-sub">
+              Refresh arrays, loops, and how to think about time complexity.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              This week is about getting comfortable again with arrays, basic
+              sorting, and describing how slow or fast an algorithm is using
+              <strong>Big-O</strong>. You’ll solve a few simple problems and
+              let AI critique and improve your code.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Refresh arrays, lists, and basic <code>for</code>-loops.</li>
+              <li>Review bubble, insertion, and selection sort.</li>
+              <li>Describe runtime using Big-O notation.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Solve 3 array problems: find min/max, reverse array, linear search.</li>
+              <li>Ask AI: “Explain the time complexity of my solution and suggest a cleaner version.”</li>
+              <li>Rewrite one solution after AI feedback focusing on clarity and naming.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/big-o-notation" target="_blank" rel="noopener">
+                Khan Academy – Big-O notation basics
+              </a></li>
+              <li><a href="https://www.khanacademy.org/computing/computer-science/algorithms" target="_blank" rel="noopener">
+                Khan Academy – Algorithms track (sorting & complexity)
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/anishLearnsToCode/leetcode-arrays-101" target="_blank" rel="noopener">
+                GitHub – “Arrays 101” solved LeetCode problems
+              </a></li>
+              <li><a href="https://www.nuculabs.dev/posts/page/11/" target="_blank" rel="noopener">
+                Blog – Arrays 101 solutions & explanations
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What does Big-O measure: actual runtime in seconds or how it grows with input size?</li>
+                <li>Q2. What is the time complexity of linear search on an array of <em>n</em> elements?</li>
+                <li>Q3. Name one difference between bubble sort and insertion sort.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>It measures how the runtime <strong>grows with input size</strong>, not raw seconds.</li>
+                  <li>O(n).</li>
+                  <li>
+                    Bubble sort repeatedly swaps adjacent out-of-order items;
+                    insertion sort builds a sorted prefix by inserting each new element
+                    in the right place.
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="accordion" data-week="2">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 2 – Recursion Basics & Problem Decomposition</div>
+            <div class="accordion-title-sub">
+              Learn how functions can call themselves and how to think in smaller sub-problems.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Recursion is a core thinking tool. You’ll practice defining
+              <strong>base cases</strong>, the <strong>recursive step</strong>,
+              and tracing the call stack. AI will help you spot infinite loops
+              and suggest iterative versions.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand base case vs recursive case.</li>
+              <li>Implement classic recursive functions (factorial, Fibonacci, sum of array).</li>
+              <li>Use AI to check if your recursion is safe and efficient.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Write recursive versions of factorial, Fibonacci, and sum of an array.</li>
+              <li>Then ask AI: “Rewrite this iteratively and explain which version is more efficient.”</li>
+              <li>Draw the recursion tree for factorial(4) or Fibonacci(5).</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.geeksforgeeks.org/dsa/introduction-to-recursion-2/" target="_blank" rel="noopener">
+                GeeksforGeeks – Introduction to Recursion
+              </a></li>
+              <li><a href="https://www.geeksforgeeks.org/dsa/recursion-algorithms/" target="_blank" rel="noopener">
+                GeeksforGeeks – Recursive Algorithms
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/aksh0001/Recursion-Problems" target="_blank" rel="noopener">
+                GitHub – Recursion problems with detailed solutions
+              </a></li>
+              <li><a href="https://faun.dev/c/stories/javinpaul/20-recursion-based-practice-problems-and-exercises-for-beginners/" target="_blank" rel="noopener">
+                Article – 20 recursion practice problems with solutions
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What happens if a recursive function has no base case?</li>
+                <li>Q2. Why is Fibonacci’s naive recursive implementation slow?</li>
+                <li>Q3. Name one reason to prefer an iterative solution over recursion.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>It calls itself forever (or until stack overflow) → infinite recursion.</li>
+                  <li>It recomputes the same subproblems again and again → exponential time.</li>
+                  <li>Iterative versions are often faster, use less memory, and avoid stack overflow.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="accordion" data-week="3">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 3 – Stacks, Queues, Hash Maps</div>
+            <div class="accordion-title-sub">
+              Learn how these core data structures work and where they show up in real problems.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll see stacks for “undo” and parentheses checking, queues for
+              scheduling and BFS, and hash maps for fast lookups. AI will help
+              you reason about trade-offs and edge cases.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand LIFO (stack) and FIFO (queue) behavior.</li>
+              <li>Know how hashing enables near O(1) lookup in maps/dicts.</li>
+              <li>Use these structures to solve small interview-style problems.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Implement a stack and queue using arrays or lists in your main language.</li>
+              <li>Solve a “Valid Parentheses” style problem using a stack.</li>
+              <li>Use a hash map/dictionary to count frequencies in an array or string.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.geeksforgeeks.org/dsa/stack-data-structure/" target="_blank" rel="noopener">
+                GeeksforGeeks – Stack Data Structure
+              </a></li>
+              <li><a href="https://www.geeksforgeeks.org/dsa/queue-data-structure/" target="_blank" rel="noopener">
+                GeeksforGeeks – Queue Data Structure
+              </a></li>
+              <li><a href="https://www.geeksforgeeks.org/dsa/hashing-data-structure/" target="_blank" rel="noopener">
+                GeeksforGeeks – Hashing & Hash Tables
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">
+                LeetCode – Valid Parentheses (check editorial + discussion)
+              </a></li>
+              <li><a href="https://algo.monster/liteproblems/20" target="_blank" rel="noopener">
+                Detailed Valid Parentheses solution (multiple languages)
+              </a></li>
+              <li><a href="https://github.com/tidwall/hashmap.c" target="_blank" rel="noopener">
+                GitHub – Hash map implementation in C (reference solution)
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Which structure would you use to implement “undo” in an editor?</li>
+                <li>Q2. Average-case time complexity for hash map lookup?</li>
+                <li>Q3. Why are queues useful in breadth-first search (BFS)?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>A stack (LIFO).</li>
+                  <li>O(1) on average.</li>
+                  <li>
+                    BFS explores nodes level-by-level; a queue naturally stores
+                    “next to visit” nodes in correct order.
+                  </li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="accordion" data-week="4">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 4 – OOP & Clean Code (Java/Python)</div>
+            <div class="accordion-title-sub">
+              Organize code into classes and methods; write code humans can actually read.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll refactor some messy procedural code into <strong>classes</strong>,
+              practice naming, and learn to keep functions small and focused.
+              AI becomes your code reviewer here: ask it to critique design, not
+              just syntax.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand classes, objects, methods, and encapsulation.</li>
+              <li>Apply basic SOLID-style thinking: single responsibility, clear interfaces.</li>
+              <li>Use AI for code review: naming, structure, and readability.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Take a 100–200 line “spaghetti” script (yours or from the web).</li>
+              <li>Refactor it into 2–4 classes with clear responsibilities.</li>
+              <li>Ask AI: “Review this like a senior engineer. What design issues do you see?”</li>
+            </ul>
+
+            <strong>Learn more (Python focus):</strong>
+            <ul>
+              <li><a href="https://realpython.com/python3-object-oriented-programming/" target="_blank" rel="noopener">
+                RealPython – OOP in Python
+              </a></li>
+              <li><a href="https://realpython.com/python-classes/" target="_blank" rel="noopener">
+                RealPython – Python Classes & Objects
+              </a></li>
+            </ul>
+
+            <strong>Learn more (Java focus):</strong>
+            <ul>
+              <li><a href="https://docs.oracle.com/javase/tutorial/java/concepts/" target="_blank" rel="noopener">
+                Oracle – Java OOP concepts overview
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://www.datacamp.com/tutorial/object-oriented-programming-python" target="_blank" rel="noopener">
+                DataCamp – OOP in Python tutorial with full example project
+              </a></li>
+              <li><a href="https://www.baeldung.com/java-clean-code" target="_blank" rel="noopener">
+                Baeldung – Clean code principles in Java (examples)
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What is encapsulation?</li>
+                <li>Q2. Why is “one class, one responsibility” a useful rule?</li>
+                <li>Q3. Give one sign your class might be doing too much.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Bundling data and methods together and hiding internal details.</li>
+                  <li>
+                    It keeps code easier to change and reason about; changes in
+                    one area don’t break everything else.
+                  </li>
+                  <li>Very long file, many unrelated methods, or lots of <code>if</code> flags.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 5 -->
+      <div class="accordion" data-week="5">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 5 – Intro to Machine Learning & Data Thinking</div>
+            <div class="accordion-title-sub">
+              What ML actually is, and how data becomes a model.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll get a bird’s-eye view of ML: features, labels, train/test
+              split, underfitting/overfitting. This week is about
+              <strong>intuition</strong>, not deep math.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand supervised vs unsupervised learning.</li>
+              <li>Know what a dataset, feature, label, and loss function are.</li>
+              <li>Train a tiny model using a high-level library (sklearn, etc.).</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Load a small dataset (e.g., from <code>sklearn.datasets</code>).</li>
+              <li>Split into train/test, train a simple model, and measure accuracy.</li>
+              <li>Ask AI: “Explain what this model is doing in plain English.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.deeplearning.ai/courses/machine-learning-specialization/" target="_blank" rel="noopener">
+                Andrew Ng – Machine Learning Specialization (overview)
+              </a></li>
+              <li><a href="https://www.youtube.com/watch?v=vStJoetOxJg" target="_blank" rel="noopener">
+                Course 1, Lesson 1 – Intro to ML (YouTube)
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/KursadKalender/Machine-Learning-Specialization" target="_blank" rel="noopener">
+                GitHub – ML Specialization solutions & notes
+              </a></li>
+              <li><a href="https://github.com/VuBacktracking/Coursera-Machine-Learning-Specialization" target="_blank" rel="noopener">
+                GitHub – Labs & assignment solutions for the specialization
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. In supervised learning, what is the “label”?</li>
+                <li>Q2. Why do we split into train and test sets?</li>
+                <li>Q3. What is “overfitting”?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>The value we want the model to predict.</li>
+                  <li>To evaluate performance on data the model hasn’t seen before.</li>
+                  <li>When the model memorizes training data and fails to generalize.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 6 -->
+      <div class="accordion" data-week="6">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 6 – Linear Regression & Gradient Descent</div>
+            <div class="accordion-title-sub">
+              Learn how models fit a line to data and update weights.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll play with linear regression and visualize how changing
+              parameters changes the predicted line. AI will help you interpret
+              loss curves and tweak learning rates.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand the idea of fitting a line to minimize error.</li>
+              <li>Know what a loss function and learning rate are.</li>
+              <li>Implement or use linear regression on a simple dataset.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Use sklearn or a tutorial notebook to fit a regression line.</li>
+              <li>Manually change learning rate to see how convergence changes.</li>
+              <li>Ask AI: “Explain this loss curve – what does it tell me?”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.deeplearning.ai/courses/machine-learning-specialization/" target="_blank" rel="noopener">
+                ML Specialization – Linear Regression modules
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera" target="_blank" rel="noopener">
+                GitHub – Linear regression labs & solutions
+              </a></li>
+              <li><a href="https://github.com/pmulard/machine-learning-specialization-andrew-ng" target="_blank" rel="noopener">
+                GitHub – Notes & implementations for ML Specialization
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What does gradient descent do?</li>
+                <li>Q2. What happens if the learning rate is too large?</li>
+                <li>Q3. Why is mean squared error common for regression?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Iteratively adjusts parameters in the direction that reduces loss.</li>
+                  <li>The loss can diverge or bounce around and never converge.</li>
+                  <li>It penalizes large errors more and is easy to differentiate.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 7 -->
+      <div class="accordion" data-week="7">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 7 – Classification & Logistic Regression</div>
+            <div class="accordion-title-sub">
+              From predicting numbers to predicting categories.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Learn how logistic regression outputs probabilities and how to
+              evaluate classifiers using accuracy, precision, recall, and
+              confusion matrices.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand sigmoid output and decision boundaries.</li>
+              <li>Interpret a confusion matrix.</li>
+              <li>Train a simple classifier on binary data.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Train logistic regression on a binary dataset (e.g., spam / not spam).</li>
+              <li>Print confusion matrix and compute accuracy.</li>
+              <li>Ask AI: “Explain which errors matter more in this problem (false positives vs false negatives).”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.geeksforgeeks.org/logistic-regression/" target="_blank" rel="noopener">
+                GeeksforGeeks – Logistic Regression
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://www.datacamp.com/tutorial/logistic-regression-python" target="_blank" rel="noopener">
+                DataCamp – Logistic regression in Python (full code)
+              </a></li>
+              <li><a href="https://realpython.com/logistic-regression-python/" target="_blank" rel="noopener">
+                RealPython – Logistic Regression step-by-step
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why do we use a sigmoid in logistic regression?</li>
+                <li>Q2. What is a confusion matrix?</li>
+                <li>Q3. When might recall be more important than precision?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>It maps any real-valued input to a 0–1 probability.</li>
+                  <li>A table summarizing true/false positives and negatives.</li>
+                  <li>In problems like disease detection, where missing a positive is very bad.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 8 -->
+      <div class="accordion" data-week="8">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 8 – Neural Nets & Transformers (High Level)</div>
+            <div class="accordion-title-sub">
+              Intuition for modern AI models, without drowning in equations.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll learn how neural networks are stacked layers of linear
+              pieces + nonlinearities, and get an intuitive picture of how
+              transformers and attention power tools like ChatGPT.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand neurons, layers, and activations (ReLU, etc.).</li>
+              <li>Know what “attention” means at a conceptual level.</li>
+              <li>Train a tiny neural network using Keras or PyTorch.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Follow a tutorial to train a small NN on MNIST or another toy dataset.</li>
+              <li>Ask AI to explain: “What is each layer doing in this model?”</li>
+              <li>Draw a simple diagram of your network architecture.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.deeplearning.ai/courses/deep-learning-specialization/" target="_blank" rel="noopener">
+                Andrew Ng – Deep Learning Specialization
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/abdur75648/Deep-Learning-Specialization-Coursera" target="_blank" rel="noopener">
+                GitHub – Deep Learning Specialization solved labs
+              </a></li>
+              <li><a href="https://github.com/muhac/coursera-deep-learning-solutions" target="_blank" rel="noopener">
+                GitHub – Deep Learning Specialization solutions manual
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why do we need nonlinear activation functions?</li>
+                <li>Q2. What problem does “attention” try to solve in sequence models?</li>
+                <li>Q3. Name one benefit of transformers over older RNNs.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Without nonlinearity, stacked layers collapse into one linear function.</li>
+                  <li>Letting the model focus on the most relevant tokens when making a prediction.</li>
+                  <li>They parallelize better, handle long-range dependencies more effectively, etc.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= WEEKS 9–24: AI TOOLS, SYSTEMS, PROJECTS ======= -->
+
+      <!-- WEEK 9 -->
+      <div class="accordion" data-week="9">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 9 – Git, GitHub & Working with AI on Repos</div>
+            <div class="accordion-title-sub">
+              Real developer workflow: branches, PRs, and AI code reviews.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll learn the essentials of Git and GitHub, and use AI to
+              explain diffs, summarize PRs, and suggest better commit messages.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Initialize repos, commit, branch, merge, and open pull requests.</li>
+              <li>Use AI to summarize diffs and review code.</li>
+              <li>Develop clean commit messages and small, focused changes.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Create a repo for this roadmap or a small project.</li>
+              <li>Make a feature branch, implement a change, open a PR.</li>
+              <li>Ask AI: “Review this PR and suggest improvements.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://docs.github.com/en/get-started/quickstart/hello-world" target="_blank" rel="noopener">
+                GitHub – Hello World tutorial
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/githubtraining/hellogitworld" target="_blank" rel="noopener">
+                Example repo – basic Git workflow
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why are small commits better than giant ones?</li>
+                <li>Q2. What is a pull request for?</li>
+                <li>Q3. How can AI help your PR workflow?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Easier to understand, review, and revert.</li>
+                  <li>To propose changes and get review before merging.</li>
+                  <li>Summarizing diffs, pointing out smells, suggesting tests and better names.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 10 -->
+      <div class="accordion" data-week="10">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 10 – Unit Testing & AI-Generated Tests</div>
+            <div class="accordion-title-sub">
+              Trust but verify: tests + AI to generate them faster.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Learn to write simple unit tests and then use AI to propose edge
+              cases, property-based tests, or refactors. Testing is where AI
+              gives a big productivity boost.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Write basic tests (e.g., Python <code>unittest</code> or <code>pytest</code>).</li>
+              <li>Use AI to generate initial tests and then refine them.</li>
+              <li>Understand what makes a good test (clear, isolated, deterministic).</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Add tests to a small project from earlier weeks.</li>
+              <li>Ask AI: “Generate unit tests for this function; focus on edge cases.”</li>
+              <li>Run tests and fix any bugs they reveal.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://docs.pytest.org/en/stable/getting-started.html" target="_blank" rel="noopener">
+                pytest – Getting started
+              </a></li>
+              <li><a href="https://donkirkby.github.io/testing/" target="_blank" rel="noopener">
+                Essay – Testing Python with examples
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/cgoldberg/python-unittest-tutorial" target="_blank" rel="noopener">
+                GitHub – Python unit test tutorial repo
+              </a></li>
+              <li><a href="https://github.com/MatthewDaws/ExamplePythonTravis" target="_blank" rel="noopener">
+                GitHub – Example Python project with tests & CI
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why shouldn’t you rely only on AI to test your code?</li>
+                <li>Q2. What’s an assertion in a test?</li>
+                <li>Q3. Name one way tests change how you design code.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>AI can miss edge cases or misunderstand requirements; you own the correctness.</li>
+                  <li>A statement that checks an expected condition (e.g., result == 5).</li>
+                  <li>They encourage smaller, more modular and testable functions/classes.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 11 -->
+      <div class="accordion" data-week="11">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 11 – Prompt Engineering Fundamentals</div>
+            <div class="accordion-title-sub">
+              Learn to talk to AI clearly: roles, constraints, and examples.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Prompting is how you aim AI. You’ll practice structured prompts,
+              iterative refinement, and giving AI examples (“few-shot
+              learning”) to steer it.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Use clear instructions, role prompting, and constraints.</li>
+              <li>Practice few-shot examples and “chain-of-thought” for complex tasks.</li>
+              <li>Develop personal prompt templates for coding and debugging.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Create a “debugging prompt” template for code errors.</li>
+              <li>Create a “refactor & document” prompt for messy code.</li>
+              <li>Iterate on each prompt 2–3 times to get better results.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">
+                OpenAI – Prompt Engineering Guide
+              </a></li>
+              <li><a href="https://www.promptingguide.ai/" target="_blank" rel="noopener">
+                Prompting Guide – patterns & techniques
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/dair-ai/Prompt-Engineering-Guide" target="_blank" rel="noopener">
+                GitHub – Prompt Engineering Guide with worked examples
+              </a></li>
+              <li><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank" rel="noopener">
+                Course – ChatGPT Prompt Engineering for Developers (with solutions)
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why is “be specific” so important in prompts?</li>
+                <li>Q2. What is a few-shot prompt?</li>
+                <li>Q3. Why should you still verify AI’s outputs, even with great prompts?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Specific prompts reduce ambiguity and make outputs more predictable.</li>
+                  <li>A prompt that includes a few examples to show the pattern you want.</li>
+                  <li>Models can still hallucinate or misinterpret requirements.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 12 -->
+      <div class="accordion" data-week="12">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 12 – Using AI Coding Tools (ChatGPT, Claude, Copilot)</div>
+            <div class="accordion-title-sub">
+              Turn AI into your coding co-pilot, not your replacement.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Learn how to integrate AI tools into VS Code / your IDE, use them
+              to generate snippets, refactors, and tests, and how to keep
+              <strong>your brain in the driver’s seat</strong>.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Install & configure at least one AI pair-programmer (e.g., Copilot).</li>
+              <li>Use it for small functions, not entire projects.</li>
+              <li>Develop a review checklist for AI-generated code.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Implement a feature twice: once mostly by hand, once with AI suggestions.</li>
+              <li>Compare readability, bugs, and test coverage.</li>
+              <li>Write a short note on when AI helped vs slowed you down.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://docs.github.com/en/copilot/get-started" target="_blank" rel="noopener">
+                GitHub Copilot – Get started
+              </a></li>
+              <li><a href="https://code.visualstudio.com/docs/copilot/getting-started" target="_blank" rel="noopener">
+                Copilot in VS Code – guide
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/features/copilot/tutorials" target="_blank" rel="noopener">
+                GitHub – Copilot tutorials with completed code
+              </a></li>
+              <li><a href="https://github.blog/ai-and-ml/github-copilot/how-to-generate-unit-tests-with-github-copilot-tips-and-examples/" target="_blank" rel="noopener">
+                Blog – Using Copilot to generate tests (examples included)
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why is it dangerous to accept AI code without reading it?</li>
+                <li>Q2. What kind of tasks are ideal for AI coding tools?</li>
+                <li>Q3. How can you use tests to control AI-generated code quality?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>It may be insecure, incorrect, or not follow your style/constraints.</li>
+                  <li>Boilerplate, repetitive patterns, simple refactors, and test scaffolding.</li>
+                  <li>Run your tests; failing tests reveal bugs regardless of who wrote the code.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 13 -->
+      <div class="accordion" data-week="13">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 13 – Backend Basics (APIs with Python or Java)</div>
+            <div class="accordion-title-sub">
+              Build your first real API and let AI help with boilerplate.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Build a simple REST API (e.g., FastAPI, Flask, or Spring Boot).
+              You’ll use AI to scaffold endpoints but you’ll design the routes
+              and data model.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand HTTP verbs (GET, POST, PUT, DELETE).</li>
+              <li>Create 3–4 endpoints for a simple resource (e.g., tasks, notes).</li>
+              <li>Use AI to generate boilerplate handlers and docstrings.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Design an API for a “tasks” resource with CRUD operations.</li>
+              <li>Implement it in your chosen backend framework.</li>
+              <li>Ask AI to generate API docs or OpenAPI schema.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" rel="noopener">
+                FastAPI – Tutorial
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/tiangolo/full-stack-fastapi-template" target="_blank" rel="noopener">
+                Full Stack FastAPI Template – reference project
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What does “RESTful” roughly mean?</li>
+                <li>Q2. Why is it useful to return proper HTTP status codes?</li>
+                <li>Q3. How can AI help you document your API?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Design that uses resources, standard HTTP verbs, and stateless operations.</li>
+                  <li>They tell clients clearly what happened (success, client error, server error).</li>
+                  <li>By generating endpoint summaries, examples, and OpenAPI descriptions.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 14 -->
+      <div class="accordion" data-week="14">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 14 – Databases & ORMs</div>
+            <div class="accordion-title-sub">
+              Persist data with SQL and an ORM, with AI helping write queries.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Hook your backend to a real database (e.g., PostgreSQL). Learn to
+              design a simple schema and let AI translate between raw SQL and
+              higher-level ORM code.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand tables, primary keys, foreign keys.</li>
+              <li>Use an ORM (SQLAlchemy, Django ORM, JPA, etc.).</li>
+              <li>Write a few queries by hand and verify with AI.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Design a schema for your tasks/notes app.</li>
+              <li>Implement models and migrations.</li>
+              <li>Ask AI: “Check this schema for obvious problems.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.sqltutorial.org/" target="_blank" rel="noopener">
+                SQL Tutorial – basic SELECT/INSERT/UPDATE/DELETE
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/sqlalchemy/sqlalchemy/tree/main/examples" target="_blank" rel="noopener">
+                SQLAlchemy examples – full working models
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What’s a primary key?</li>
+                <li>Q2. Why use an ORM instead of only hand-written SQL?</li>
+                <li>Q3. What can go wrong if you don’t think about indexes?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>A unique identifier for each row in a table.</li>
+                  <li>ORMs reduce boilerplate and keep queries close to your language objects.</li>
+                  <li>Queries may be slow on large tables if there’s no suitable index.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 15 -->
+      <div class="accordion" data-week="15">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 15 – Frontend Basics & Calling APIs</div>
+            <div class="accordion-title-sub">
+              Build a simple UI (React or similar) that talks to your backend.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Create a basic frontend (React/Vue/vanilla) that lists items from
+              your API and lets you create/delete them. AI can help generate
+              components and explain state management.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand components, props, and state (React).</li>
+              <li>Call your backend API and render the results.</li>
+              <li>Use AI for UI boilerplate but keep logic clear.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Build a simple SPA for your tasks/notes app.</li>
+              <li>Add create & delete; optional: edit.</li>
+              <li>Ask AI to refactor one component for readability.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://react.dev/learn" target="_blank" rel="noopener">
+                React – Official Learn docs
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://jojozhuang.github.io/tutorial/creating-full-stack-app-with-react-and-nodejs/" target="_blank" rel="noopener">
+                Tutorial – Full stack React + Node example code
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What is “state” in React?</li>
+                <li>Q2. Why fetch data in an effect or on mount instead of in the global scope?</li>
+                <li>Q3. How can AI help you debug frontend errors?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Data that can change over time and trigger re-renders.</li>
+                  <li>So it runs at the right time and has access to browser APIs / component lifecycle.</li>
+                  <li>By explaining error messages and suggesting changes while you still reason about them.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 16 -->
+      <div class="accordion" data-week="16">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 16 – AI-Powered Feature #1 (Mini Project)</div>
+            <div class="accordion-title-sub">
+              Add a small ML/AI feature to your app (e.g., smart suggestions).
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Use a simple ML model or an LLM API to add “intelligence” to your
+              app: auto-tagging notes, summarizing content, or offering
+              suggestions.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Pick 1 small feature where AI genuinely helps the user.</li>
+              <li>Call an ML model or LLM API from your backend.</li>
+              <li>Handle errors and timeouts gracefully.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Add a “Summarize note” button using an LLM API.</li>
+              <li>Log and inspect a few responses; adjust prompts.</li>
+              <li>Ask AI: “Help me improve this prompt for concise summaries.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://platform.openai.com/docs/introduction" target="_blank" rel="noopener">
+                OpenAI API – Introduction
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/openai/openai-cookbook" target="_blank" rel="noopener">
+                OpenAI Cookbook – many working code examples
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why should AI features fail gracefully?</li>
+                <li>Q2. What’s one risk of sending raw user data to an external API?</li>
+                <li>Q3. How can you test an AI-powered feature?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Network or quota failures shouldn’t break the app; users should still function.</li>
+                  <li>Privacy/security issues; data may be sensitive.</li>
+                  <li>Use mock responses, golden-file outputs, and user acceptance tests.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 17 -->
+      <div class="accordion" data-week="17">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 17 – System Design Basics</div>
+            <div class="accordion-title-sub">
+              Learn to think in services, databases, and traffic, not just functions.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll study how large-scale systems are structured and use AI as
+              a whiteboard buddy: propose designs, then let AI poke holes in
+              them.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand latency, throughput, and basic scalability concepts.</li>
+              <li>Read through at least one full system design (e.g., URL shortener).</li>
+              <li>Use AI to critique your design choices.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Sketch a design for a simple URL shortener or chat app.</li>
+              <li>Ask AI: “Critique this design: bottlenecks, single points of failure?”</li>
+              <li>Iterate once based on feedback.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">
+                System Design Primer (GitHub)
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/prasadgujar/low-level-design-primer" target="_blank" rel="noopener">
+                Low-level design primer with sample solutions
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What’s the difference between horizontal and vertical scaling?</li>
+                <li>Q2. Why do we use caches?</li>
+                <li>Q3. How can AI help prepare for system design interviews?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Vertical: bigger machines; horizontal: more machines.</li>
+                  <li>To speed up repeated reads and reduce load on databases.</li>
+                  <li>By simulating interviews, critiquing diagrams, and suggesting trade-offs.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 18 -->
+      <div class="accordion" data-week="18">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 18 – Docker & Containerization</div>
+            <div class="accordion-title-sub">
+              Package your app so it runs the same everywhere.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Learn to write a Dockerfile, build an image, and run containers.
+              You’ll containerize your mini app and optionally use docker-compose.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand images vs containers.</li>
+              <li>Write a basic Dockerfile for your backend.</li>
+              <li>Use Docker Compose for multi-container dev (app + DB).</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Containerize your API and run it locally.</li>
+              <li>Optionally, add the database via docker-compose.</li>
+              <li>Ask AI: “Improve this Dockerfile for smaller image size.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">
+                Docker – Get Started guide
+              </a></li>
+              <li><a href="https://docker-curriculum.com/" target="_blank" rel="noopener">
+                Docker Curriculum – Beginner tutorial
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/docker/getting-started" target="_blank" rel="noopener">
+                Docker Getting Started Tutorial – example app
+              </a></li>
+              <li><a href="https://github.com/docker/getting-started-todo-app" target="_blank" rel="noopener">
+                Docker Todo App – full example with best practices
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why do teams use containers instead of “works on my machine” setups?</li>
+                <li>Q2. What does <code>FROM</code> do in a Dockerfile?</li>
+                <li>Q3. What’s the benefit of multi-stage builds?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Containers bundle dependencies so behavior is consistent across environments.</li>
+                  <li>Specifies the base image to build on.</li>
+                  <li>They can produce smaller final images by separating build and runtime stages.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 19 -->
+      <div class="accordion" data-week="19">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 19 – Testing, CI & AI Support</div>
+            <div class="accordion-title-sub">
+              Automate your tests and let AI help generate pipelines.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll wire your tests into GitHub Actions (or similar) so every
+              push runs tests. AI can help write workflow files and debug them.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand Continuous Integration at a high level.</li>
+              <li>Create a simple CI workflow to run tests on push.</li>
+              <li>Use AI to generate and fix YAML configs.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Add a CI workflow to your project repo.</li>
+              <li>Make a failing test and watch CI go red; then fix it.</li>
+              <li>Ask AI: “Improve this workflow for speed and clarity.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions" target="_blank" rel="noopener">
+                GitHub Actions – Understanding Actions
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/epicweb-dev/full-stack-testing" target="_blank" rel="noopener">
+                Full Stack Testing – repo with tests & workflows
+              </a></li>
+              <li><a href="https://dev.to/achukka/build-and-test-react-app-with-github-actions-2jb2" target="_blank" rel="noopener">
+                Article – Build & Test React App with GitHub Actions
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why is CI valuable even for solo developers?</li>
+                <li>Q2. What triggers a GitHub Actions workflow?</li>
+                <li>Q3. How can AI help when a workflow fails with a cryptic error?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>It catches issues early and keeps the project always in a runnable state.</li>
+                  <li>Events like pushes, PRs, or manual dispatches.</li>
+                  <li>Paste logs and ask AI to explain the error and propose fixes.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 20 -->
+      <div class="accordion" data-week="20">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 20 – System Design Deep Dive (AI-Era)</div>
+            <div class="accordion-title-sub">
+              Analyze how systems like ChatGPT or similar are designed.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              You’ll read about modern LLM system design (how chat services
+              handle huge traffic) and practice designing an AI-powered feature
+              end-to-end.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand high-level architecture of an LLM app (frontend, API, model, cache).</li>
+              <li>Think about latency, cost, and safety in your design.</li>
+              <li>Use AI to critique scalability and reliability.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Design a small “AI code assistant” system and sketch components.</li>
+              <li>Ask AI: “Where would you add caching? What happens on traffic spikes?”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://www.educative.io/blog/how-chatgpt-system-design-works" target="_blank" rel="noopener">
+                How ChatGPT System Design Works – article
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://www.systemdesignhandbook.com/guides/how-chatgpt-system-design/" target="_blank" rel="noopener">
+                System Design Handbook – ChatGPT case study
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why do LLM services use queues and autoscaling?</li>
+                <li>Q2. What is observability (logs, metrics, traces) used for?</li>
+                <li>Q3. Name one way to reduce cost per request in an LLM system.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>To handle spikes gracefully and scale workers as needed.</li>
+                  <li>To debug, monitor performance, and detect incidents.</li>
+                  <li>Caching, batching, smaller models for some traffic, or shorter prompts.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 21 -->
+      <div class="accordion" data-week="21">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 21 – Ethics, Privacy & Data Governance</div>
+            <div class="accordion-title-sub">
+              Be the engineer who cares about safety, not just speed.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Learn about bias, privacy, and compliance. You’ll use AI to think
+              through scenarios, but you’re responsible for the decisions.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Understand basic data privacy ideas (PII, minimization).</li>
+              <li>Recognize bias and fairness concerns in ML.</li>
+              <li>Design simple guardrails for your app.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>List all user data your app collects and why.</li>
+              <li>Ask AI: “What are the privacy risks here? How can I reduce them?”</li>
+              <li>Write a short “data handling” note for your project README.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://cloud.google.com/discover/what-is-prompt-engineering" target="_blank" rel="noopener">
+                Google – Prompt engineering & safety context
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://developers.google.com/machine-learning/fairness-overview" target="_blank" rel="noopener">
+                Google – ML fairness overview with examples
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What is personally identifiable information (PII)?</li>
+                <li>Q2. Why should you minimize stored data?</li>
+                <li>Q3. Give an example of algorithmic bias.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Data that can identify a person (name, email, ID, etc.).</li>
+                  <li>Less data means less breach risk and simpler compliance.</li>
+                  <li>A model that works worse for one demographic group due to biased training data.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 22 -->
+      <div class="accordion" data-week="22">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 22 – Capstone Design (Plan Your Final Project)</div>
+            <div class="accordion-title-sub">
+              Define a serious project that shows you’re AI-fluent, not just AI-using.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              This week is pure planning: you’ll design a capstone project that
+              combines core CS, AI, and good engineering practices.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Pick a problem that’s meaningful (to you or others).</li>
+              <li>Define features, architecture, and success criteria.</li>
+              <li>Split the project into 2–3 milestones.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Write a one-page project brief (problem, users, features, tech stack).</li>
+              <li>Draw a system diagram (frontend, backend, DB, AI parts).</li>
+              <li>Ask AI: “Critique this scope and suggest what to cut or add.”</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://fastapi.tiangolo.com/project-generation/" target="_blank" rel="noopener">
+                FastAPI – Full stack template (good capstone base)
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/fastapi/full-stack-fastapi-template" target="_blank" rel="noopener">
+                Full Stack FastAPI Template – full project structure
+              </a></li>
+              <li><a href="https://github.com/HemanthJoseph/ML-Projects-with-Deployment" target="_blank" rel="noopener">
+                ML Projects with Deployment – end-to-end examples
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why is it better to have a small finished capstone than a huge unfinished one?</li>
+                <li>Q2. What should a good capstone show to employers?</li>
+                <li>Q3. How can AI help you during planning (but not do it for you)?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Finished projects prove you can deliver; unfinished ones don’t.</li>
+                  <li>Real problem solving, solid engineering, tests, and thoughtful AI use.</li>
+                  <li>By brainstorming ideas, checking feasibility, and giving feedback on your plan.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 23 -->
+      <div class="accordion" data-week="23">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 23 – Capstone Implementation & AI Support</div>
+            <div class="accordion-title-sub">
+              Build milestone 1–2 of your capstone with AI as co-pilot.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Start implementing your capstone: focus on core functionality and
+              get something working end-to-end, even if it’s ugly.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Build the first vertical slice: one real user flow that works.</li>
+              <li>Integrate your AI component (model or API).</li>
+              <li>Keep tests and basic CI working.</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Complete backend + DB + minimal frontend for one feature.</li>
+              <li>Use AI heavily for boilerplate but keep reviewing everything.</li>
+              <li>Write documentation for how to run the project locally.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://github.com/drdataSpp/Spp-End2End-ML-Projects" target="_blank" rel="noopener">
+                End-to-end ML Projects – example architectures
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow" target="_blank" rel="noopener">
+                End-to-end ML + deployment project example
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. What is a “vertical slice” of functionality?</li>
+                <li>Q2. Why keep your capstone repo clean (README, structure, tests)?</li>
+                <li>Q3. Name one way AI can speed up implementation without lowering quality.</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>An end-to-end user path that works through all layers of the system.</li>
+                  <li>It makes it easier for reviewers/employers to understand and trust your work.</li>
+                  <li>Generating boilerplate code which you then review, test, and refine.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 24 -->
+      <div class="accordion" data-week="24">
+        <div class="accordion-header">
+          <div class="accordion-title">
+            <div class="accordion-title-main">Week 24 – Capstone Polish, Docs & Portfolio</div>
+            <div class="accordion-title-sub">
+              Polish, document, and ship. Turn your work into a portfolio story.
+            </div>
+          </div>
+          <div class="accordion-meta">
+            <label class="week-status">
+              <input type="checkbox" class="week-done" />
+              <span>Done</span>
+            </label>
+            <div class="chevron">&gt;</div>
+          </div>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>
+              Final week: tests passing, README cleaned up, maybe a small live
+              demo. You’ll also write a short “case study” explaining what you
+              built and how AI helped.
+            </p>
+
+            <strong>Goals:</strong>
+            <ul>
+              <li>Fix remaining bugs and rough edges.</li>
+              <li>Write clear docs and a project overview.</li>
+              <li>Prepare a short walkthrough (text or video).</li>
+            </ul>
+
+            <strong>Practice:</strong>
+            <ul>
+              <li>Run full test suite and fix any failing tests.</li>
+              <li>Ask AI to proof-read your README and suggest improvements.</li>
+              <li>Write a 1–2 page “Project story” for your portfolio.</li>
+            </ul>
+
+            <strong>Learn more:</strong>
+            <ul>
+              <li><a href="https://projectpro.io/article/machine-learning-projects-on-github/465" target="_blank" rel="noopener">
+                Examples – ML projects on GitHub (for inspiration)
+              </a></li>
+            </ul>
+
+            <strong>Answer keys / examples:</strong>
+            <ul>
+              <li><a href="https://github.com/fastapi/full-stack-fastapi-template" target="_blank" rel="noopener">
+                Full stack template – shows clean docs & structure
+              </a></li>
+              <li><a href="https://github.com/nahidkishore/Node-React-Full-Stack-App" target="_blank" rel="noopener">
+                Node + React full stack app with CI/CD & Docker
+              </a></li>
+            </ul>
+
+            <div class="quiz">
+              <div class="section-tag">Quick quiz</div>
+              <ul>
+                <li>Q1. Why is documentation part of engineering, not “extra work”?</li>
+                <li>Q2. What should a good project README include?</li>
+                <li>Q3. How can you talk about AI in your project without making it the whole story?</li>
+              </ul>
+              <details>
+                <summary>Show quiz answers</summary>
+                <ol>
+                  <li>Others (and future-you) need to understand, run, and extend your work.</li>
+                  <li>What it does, how to run it, tech stack, features, and maybe screenshots.</li>
+                  <li>Mention where AI helped (e.g., features, productivity) but emphasize your design and decisions.</li>
+                </ol>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMPT LIBRARY -->
+    <section id="prompt-library">
+      <h2>Prompt Library (You + AI Coding)</h2>
+      <p style="margin-top:4px;">
+        A few reusable prompts you can paste into ChatGPT/Claude/Copilot Chat.
+        Customize them over time.
+      </p>
+      <ul style="margin-top:10px;margin-left:18px;font-size:0.9rem;display:grid;gap:8px;color:var(--text-soft);">
+        <li>
+          <strong>Debugging prompt:</strong>
+          <br />
+          “You are a senior engineer. I’ll paste an error message and the
+          relevant code. Explain what is likely wrong and give 2–3 concrete
+          fixes. Then show a corrected version of the code. Finally, list tests
+          I should run to be sure it’s fixed.”
+        </li>
+        <li>
+          <strong>Refactor & document prompt:</strong>
+          <br />
+          “Please refactor this code for clarity, add docstrings/comments where
+          helpful, and point out any potential bugs or edge cases. Don’t change
+          external behavior.”
+        </li>
+        <li>
+          <strong>Test-generation prompt:</strong>
+          <br />
+          “Here is a function. Generate unit tests for it in &lt;framework&gt;,
+          focusing on normal cases, edge cases, and error conditions. Explain
+          why each test is useful.”
+        </li>
+      </ul>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources">
+      <h2>Core External Resources</h2>
+      <p style="margin-top:4px;">
+        These are “anchor” resources you’ll reuse across multiple weeks.
+      </p>
+      <ul style="margin-top:10px;margin-left:18px;font-size:0.9rem;display:grid;gap:6px;color:var(--text-soft);">
+        <li><strong>Algorithms & DS:</strong> Khan Academy Algorithms, LeetCode practice, System Design Primer.</li>
+        <li><strong>ML & DL:</strong> Andrew Ng’s Machine Learning + Deep Learning Specializations.</li>
+        <li><strong>Prompting:</strong> OpenAI Prompt Engineering Guide, PromptEngineeringGuide.ai.</li>
+        <li><strong>System Design:</strong> System Design Primer + ChatGPT system design articles.</li>
+        <li><strong>DevOps:</strong> Docker Docs + GitHub Actions docs.</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      const accordions = Array.from(document.querySelectorAll('.accordion'));
+      const progressBar = document.getElementById('progress-bar-inner');
+      const progressLabel = document.getElementById('progress-label');
+      const expandAllBtn = document.getElementById('expand-all');
+      const collapseAllBtn = document.getElementById('collapse-all');
+      const resetBtn = document.getElementById('reset-progress');
+
+      const STORAGE_KEY = 'ai-roadmap-weeks-done';
+
+      function loadProgress() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return {};
+          return JSON.parse(raw);
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function saveProgress(state) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      const state = loadProgress();
+
+      accordions.forEach((acc) => {
+        const week = acc.getAttribute('data-week');
+        const checkbox = acc.querySelector('.week-done');
+        const status = acc.querySelector('.week-status');
+
+        if (state[week]) {
+          checkbox.checked = true;
+          status.classList.add('completed');
+        }
+
+        checkbox.addEventListener('change', () => {
+          state[week] = checkbox.checked;
+          if (!checkbox.checked) delete state[week];
+          if (checkbox.checked) {
+            status.classList.add('completed');
+          } else {
+            status.classList.remove('completed');
+          }
+          saveProgress(state);
+          updateProgress();
+        });
+
+        const header = acc.querySelector('.accordion-header');
+        const content = acc.querySelector('.accordion-content');
+
+        header.addEventListener('click', (e) => {
+          if (e.target === checkbox) return;
+          const isOpen = acc.classList.contains('open');
+          if (isOpen) {
+            acc.classList.remove('open');
+            content.style.maxHeight = '0px';
+          } else {
+            acc.classList.add('open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        });
+
+        // open a bit by default on load
+        if (parseInt(week, 10) <= 1) {
+          acc.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+
+      function updateProgress() {
+        const total = accordions.length;
+        const done = Object.keys(state).length;
+        const pct = (done / total) * 100;
+        progressBar.style.width = pct + '%';
+        progressLabel.textContent = `${done} / ${total} weeks completed`;
+      }
+
+      expandAllBtn.addEventListener('click', () => {
+        accordions.forEach((acc) => {
+          const content = acc.querySelector('.accordion-content');
+          acc.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        });
+      });
+
+      collapseAllBtn.addEventListener('click', () => {
+        accordions.forEach((acc) => {
+          const content = acc.querySelector('.accordion-content');
+          acc.classList.remove('open');
+          content.style.maxHeight = '0px';
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        Object.keys(state).forEach((k) => delete state[k]);
+        saveProgress(state);
+        accordions.forEach((acc) => {
+          const checkbox = acc.querySelector('.week-done');
+          const status = acc.querySelector('.week-status');
+          checkbox.checked = false;
+          status.classList.remove('completed');
+        });
+        updateProgress();
+      });
+
+      updateProgress();
+    })();
+  </script>
+</body>
+</html>
